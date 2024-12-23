@@ -4,3 +4,4 @@ langchain-ollama
 python-dotenv
 chromadb
 pypdf
+tqdm
