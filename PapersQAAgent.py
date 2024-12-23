@@ -129,18 +129,34 @@ class PapersQAAgent:
             return f"Error searching papers: {str(e)}"
             
     def get_paper_metadata(self) -> str:
-        """Return metadata about loaded papers"""
+        """Return metadata about loaded papers in a formatted string"""
         if not self.vector_store:
             return "No papers loaded yet"
         
         try:
             collection = self.vector_store.get()
-            return {
-                "project_name": self.project_name,
-                "papers_directory": self.papers_dir,
-                "model_used": self.model_name,
-                "chunks_indexed": len(collection['ids'])
-            }
+            pdf_files = [f for f in os.listdir(self.papers_dir) if f.lower().endswith('.pdf')]
+            
+            metadata = [
+                "\n📊 Papers QA System Metadata",
+                "=" * 30,
+                f"🔹 Project Name: {self.project_name}",
+                f"🔹 Model: {self.model_name}",
+                f"🔹 Papers Location: {self.papers_dir}",
+                f"🔹 Number of Papers: {len(pdf_files)}",
+                f"🔹 Total Chunks Indexed: {len(collection['ids'])}",
+                f"🔹 Vector DB Location: {self.chroma_db_dir}",
+                "\n📑 Loaded Papers:",
+                "-" * 20
+            ]
+            
+            # Add list of papers with sizes
+            for pdf in pdf_files:
+                file_path = os.path.join(self.papers_dir, pdf)
+                size_mb = os.path.getsize(file_path) / (1024 * 1024)
+                metadata.append(f"📄 {pdf} ({size_mb:.2f} MB)")
+            
+            return "\n".join(metadata)
         except Exception as e:
             return f"Error getting metadata: {str(e)}"
 
