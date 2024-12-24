@@ -43,3 +43,8 @@ ENV/
 .idea/
 *.swp
 *.swo
+
+
+
+#Md files   
+RAG.md

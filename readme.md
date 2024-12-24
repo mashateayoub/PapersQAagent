@@ -41,7 +41,6 @@ CHROMA_DB_DIR=./chroma_db
 OLLAMA_BASE_URL=http://localhost:11434
 ```
 
-
 ## Usage
 
 1. Add PDF papers to the papers directory
