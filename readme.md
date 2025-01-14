@@ -6,7 +6,7 @@ A LangChain-powered question-answering system for scientific papers using Ollama
 
 * Load and process PDF papers automatically
 * Smart document chunking and embedding generation
-* Interactive Q&A interface for paper content
+* Interactive Q&A command line interface 
 * Vector similarity search using ChromaDB
 * Progress tracking for document processing
 
