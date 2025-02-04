@@ -36,9 +36,11 @@ pip install -r requirements.txt
 ```plaintext
 PROJECT_NAME=scientific_papers_qa
 PAPERS_DIR=./papers
-OLLAMA_MODEL=llama3.2
+OLLAMA_MODEL=deepseek-r1:14b 
+OLLAMA_EMBEDDING_MODEL=snowflake-arctic-embed:335m-l-fp16
 CHROMA_DB_DIR=./chroma_db
 OLLAMA_BASE_URL=http://localhost:11434
+
 ```
 
 ## Usage
