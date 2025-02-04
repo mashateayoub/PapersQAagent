@@ -21,11 +21,12 @@ class PapersQAAgent:
         load_dotenv()
         self.project_name = os.getenv('PROJECT_NAME')
         self.papers_dir = os.getenv('PAPERS_DIR')
-        self.model_name = os.getenv('OLLAMA_MODEL')
+        self.llm_model = os.getenv('OLLAMA_MODEL')  # Model for QA
+        self.embedding_model = os.getenv('OLLAMA_EMBEDDING_MODEL')  # Model for embeddings
         self.chroma_db_dir = os.getenv('CHROMA_DB_DIR')
         self.ollama_base_url = os.getenv('OLLAMA_BASE_URL')
         self.hashes_file = os.path.join(self.chroma_db_dir, "file_hashes.json")
-        self.reasoning = False  # Add this line
+        self.reasoning = False
 
         # Create papers directory if it doesn't exist
         os.makedirs(self.papers_dir, exist_ok=True)
@@ -34,11 +35,11 @@ class PapersQAAgent:
         # Initialize components
         try:
             self.llm = OllamaLLM(
-                model=self.model_name,
+                model=self.llm_model,
                 base_url=self.ollama_base_url
             )
             self.embeddings = OllamaEmbeddings(
-                model=self.model_name,
+                model=self.embedding_model,
                 base_url=self.ollama_base_url
             )
             self.vector_store = None

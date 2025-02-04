@@ -62,7 +62,6 @@ def print_help():
 def main():
     # Initialize the agent
     agent = PapersQAAgent()
-
     print_help()
 
     while True:

@@ -5,3 +5,8 @@ python-dotenv
 chromadb
 pypdf
 tqdm
+requests
+typing-extensions
+SpeechRecognition
+pyaudio
+numpy
